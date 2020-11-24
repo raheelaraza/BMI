@@ -43,42 +43,57 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: [
                 Expanded(
-                  child: GestureDetector(
+                  /*child: GestureDetector(
                     onTap: () {
                       setState(() {
                         //updateColor(Gender.male);
                         selectGender = Gender.male;
                       });
+                    },*/
+                  child: Repeate_contanier(
+                    onpressed: () {
+                      setState(
+                        () {
+                          selectGender = Gender.male;
+                        },
+                      );
                     },
-                    child: Repeate_contanier(
-                      colors: selectGender == Gender.male
-                          ? activationcolor
-                          : deactivationcolor,
-                      cardWidge: RepeateTextIcon(
-                        iconData: FontAwesomeIcons.male,
-                        Label: "MALE",
-                      ),
+                    colors: selectGender == Gender.male
+                        ? activationcolor
+                        : deactivationcolor,
+                    cardWidge: RepeateTextIcon(
+                      iconData: FontAwesomeIcons.male,
+                      Label: "MALE",
                     ),
                   ),
+                  // ),
                 ),
                 Expanded(
-                  child: GestureDetector(
+                  /*child: GestureDetector(
                     onTap: () {
                       setState(() {
                         //updateColor(Gender.female);
                         selectGender = Gender.female;
                       });
+                    },*/
+
+                  child: Repeate_contanier(
+                    onpressed: () {
+                      setState(
+                        () {
+                          selectGender = Gender.female;
+                        },
+                      );
                     },
-                    child: Repeate_contanier(
-                      colors: selectGender == Gender.female
-                          ? activationcolor
-                          : deactivationcolor,
-                      cardWidge: RepeateTextIcon(
-                        iconData: FontAwesomeIcons.female,
-                        Label: "FEMALE",
-                      ),
+                    colors: selectGender == Gender.female
+                        ? activationcolor
+                        : deactivationcolor,
+                    cardWidge: RepeateTextIcon(
+                      iconData: FontAwesomeIcons.female,
+                      Label: "FEMALE",
                     ),
                   ),
+                  //),
                 ),
               ],
             ),

@@ -4,7 +4,6 @@ class RepeateTextIcon extends StatelessWidget {
   RepeateTextIcon({@required this.iconData, this.Label});
   final IconData iconData;
   final String Label;
-
   @override
   Widget build(BuildContext context) {
     return Column(
