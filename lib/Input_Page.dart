@@ -28,6 +28,7 @@ class _InputPageState extends State<InputPage> {
     }
   }*/
   Gender selectGender;
+  int slider_height = 180;
 
   @override
   Widget build(BuildContext context) {
@@ -104,6 +105,31 @@ class _InputPageState extends State<InputPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('HEIGHT', style: ConstentTextLabel),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        slider_height.toString(),
+                        style: ConstentTextLabe2,
+                      ),
+                      Text(
+                        'cm',
+                        style: ConstentTextLabel,
+                      ),
+                    ],
+                  ),
+                  Slider(
+                    value: slider_height.toDouble(),
+                    min: 100.0,
+                    max: 220.0,
+                    activeColor: Colors.redAccent,
+                    inactiveColor: Colors.white,
+                    onChanged: (double newvalue) {
+                      setState(() {
+                        slider_height = newvalue.round();
+                      });
+                    },
+                  )
                 ],
               ),
             ),
