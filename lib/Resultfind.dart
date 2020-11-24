@@ -4,6 +4,10 @@ import 'Repeate_contanier.dart';
 import 'Input_Page.dart';
 
 class Resultfind extends StatelessWidget {
+  Resultfind({@required this.bmiresult, this.final_result, this.suggestion});
+  final String bmiresult;
+  final String final_result;
+  final String suggestion;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,10 +36,10 @@ class Resultfind extends StatelessWidget {
                   //crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text("NORMAL", style: Result1),
-                    Text("180", style: Result2),
+                    Text(final_result, style: Result1),
+                    Text(bmiresult, style: Result2),
                     Text(
-                      'SUGGESTION',
+                      suggestion,
                       textAlign: TextAlign.center,
                     ),
                   ],

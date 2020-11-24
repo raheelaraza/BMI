@@ -5,6 +5,7 @@ import 'RepeateTextIcon.dart';
 import 'constent_variable.dart';
 import 'RoundIcon.dart';
 import 'Resultfind.dart';
+import 'calculation.dart';
 
 enum Gender {
   male,
@@ -17,23 +18,10 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  /*Color maleColor = deactivationcolor;
-  Color femaleColor = deactivationcolor;
-  void updateColor(Gender genderType) {
-    if (genderType == Gender.male) {
-      maleColor = activationcolor;
-      femaleColor = deactivationcolor;
-    }
-    if (genderType == Gender.female) {
-      maleColor = deactivationcolor;
-      femaleColor = activationcolor;
-    }
-  }*/
   Gender selectGender;
-  int slider_height = 180;
+  int slider_height = 100;
   int slider_weight = 20;
   int sliderage = 10;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,16 +29,15 @@ class _InputPageState extends State<InputPage> {
         title: Text('BMI'),
       ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
             child: Row(
               children: [
                 Expanded(
-                  /*child: GestureDetector(
+                  /* child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        //updateColor(Gender.male);
+                        //update_color(Gender.male);
                         selectGender = Gender.male;
                       });
                     },*/
@@ -67,16 +54,16 @@ class _InputPageState extends State<InputPage> {
                         : deactivationcolor,
                     cardWidge: RepeateTextIcon(
                       iconData: FontAwesomeIcons.male,
-                      Label: "MALE",
+                      Label: 'MALE',
                     ),
                   ),
-                  // ),
+                  //),
                 ),
                 Expanded(
                   /*child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        //updateColor(Gender.female);
+                        //update_color(Gender.female);
                         selectGender = Gender.female;
                       });
                     },*/
@@ -94,7 +81,7 @@ class _InputPageState extends State<InputPage> {
                         : deactivationcolor,
                     cardWidge: RepeateTextIcon(
                       iconData: FontAwesomeIcons.female,
-                      Label: "FEMALE",
+                      Label: 'FEMALE',
                     ),
                   ),
                   //),
@@ -103,39 +90,45 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           Expanded(
-            child: Repeate_contanier(
-              colors: Color(0xFF1D1E33),
-              cardWidge: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('HEIGHT', style: ConstentTextLabel),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        slider_height.toString(),
-                        style: ConstentTextLabe2,
-                      ),
-                      Text(
-                        'cm',
-                        style: ConstentTextLabel,
-                      ),
-                    ],
+            child: Row(
+              children: [
+                Expanded(
+                  child: Repeate_contanier(
+                    colors: Color(0xFF1D1E33),
+                    cardWidge: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('HEIGHT', style: ConstentTextLabel),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              '$slider_height',
+                              style: ConstentTextLabe2,
+                            ),
+                            Text(
+                              'cm',
+                              style: ConstentTextLabel,
+                            ),
+                          ],
+                        ),
+                        Slider(
+                          value: slider_height.toDouble(),
+                          min: 100.0,
+                          max: 220.0,
+                          activeColor: Colors.redAccent,
+                          inactiveColor: Colors.white,
+                          onChanged: (double newvalue) {
+                            setState(() {
+                              slider_height = newvalue.round();
+                            });
+                          },
+                        ),
+                      ],
+                    ),
                   ),
-                  Slider(
-                    value: slider_height.toDouble(),
-                    min: 100.0,
-                    max: 220.0,
-                    activeColor: Colors.redAccent,
-                    inactiveColor: Colors.white,
-                    onChanged: (double newvalue) {
-                      setState(() {
-                        slider_height = newvalue.round();
-                      });
-                    },
-                  )
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           Expanded(
@@ -150,8 +143,7 @@ class _InputPageState extends State<InputPage> {
                           'WEGHT',
                           style: ConstentTextLabel,
                         ),
-                        Text(slider_weight.toString(),
-                            style: ConstentTextLabe2),
+                        Text('$slider_weight', style: ConstentTextLabe2),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -181,47 +173,52 @@ class _InputPageState extends State<InputPage> {
                 ),
                 Expanded(
                   child: Repeate_contanier(
-                    cardWidge: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('AGE', style: ConstentTextLabel),
-                        Text(sliderage.toString(), style: ConstentTextLabe2),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            RoundIcon(
-                              icondata: FontAwesomeIcons.minus,
-                              onPress: () {
-                                setState(() {
-                                  sliderage--;
-                                });
-                              },
-                            ),
-                            SizedBox(width: 5),
-                            RoundIcon(
-                              icondata: FontAwesomeIcons.plus,
-                              onPress: () {
-                                setState(() {
-                                  sliderage++;
-                                });
-                              },
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                    colors: Color(0xFF1D1E33),
-                  ),
+                      cardWidge: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('AGE', style: ConstentTextLabel),
+                          Text('$sliderage', style: ConstentTextLabe2),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              RoundIcon(
+                                icondata: FontAwesomeIcons.minus,
+                                onPress: () {
+                                  setState(() {
+                                    sliderage--;
+                                  });
+                                },
+                              ),
+                              SizedBox(width: 5),
+                              RoundIcon(
+                                icondata: FontAwesomeIcons.plus,
+                                onPress: () {
+                                  setState(() {
+                                    sliderage++;
+                                  });
+                                },
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                      colors: Color(0xFF1D1E33)),
                 ),
               ],
             ),
           ),
           GestureDetector(
             onTap: () {
+              Calculation cal =
+                  Calculation(heigh: slider_height, weight: slider_weight);
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => Resultfind(),
+                  builder: (context) => Resultfind(
+                    bmiresult: cal.Calculations(),
+                    final_result: cal.get_result(),
+                    suggestion: cal.get_suggestion(),
+                  ),
                 ),
               );
             },
