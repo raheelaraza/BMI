@@ -12,3 +12,8 @@ const ConstentTextLabe2 = TextStyle(
   fontSize: 60,
   fontWeight: FontWeight.w900,
 );
+
+const ConstentTextLabe3 = TextStyle(
+  fontSize: 30,
+  fontWeight: FontWeight.w900,
+);
