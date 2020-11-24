@@ -29,6 +29,7 @@ class _InputPageState extends State<InputPage> {
   }*/
   Gender selectGender;
   int slider_height = 180;
+  int slider_weight = 20;
 
   @override
   Widget build(BuildContext context) {
@@ -139,6 +140,17 @@ class _InputPageState extends State<InputPage> {
               children: [
                 Expanded(
                   child: Repeate_contanier(
+                    cardWidge: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'WEGHT',
+                          style: ConstentTextLabel,
+                        ),
+                        Text(slider_weight.toString(),
+                            style: ConstentTextLabe2),
+                      ],
+                    ),
                     colors: Color(0xFF1D1E33),
                   ),
                 ),
