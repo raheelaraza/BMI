@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'Repeate_contanier.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'RepeateTextIcon.dart';
+import 'constent_variable.dart';
 
 enum Gender {
   male,
   female,
 }
-
-const activationcolor = Color(0xFF111328);
-const deactivationcolor = Color(0xFF1D1E33);
 
 class InputPage extends StatefulWidget {
   @override
@@ -38,6 +36,7 @@ class _InputPageState extends State<InputPage> {
         title: Text('BMI'),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
             child: Row(
@@ -101,6 +100,12 @@ class _InputPageState extends State<InputPage> {
           Expanded(
             child: Repeate_contanier(
               colors: Color(0xFF1D1E33),
+              cardWidge: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('HEIGHT', style: ConstentTextLabel),
+                ],
+              ),
             ),
           ),
           Expanded(

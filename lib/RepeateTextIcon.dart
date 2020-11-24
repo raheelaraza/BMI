@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'constent_variable.dart';
 
 class RepeateTextIcon extends StatelessWidget {
   RepeateTextIcon({@required this.iconData, this.Label});
@@ -17,10 +18,7 @@ class RepeateTextIcon extends StatelessWidget {
         SizedBox(height: 10),
         Text(
           Label,
-          style: TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.bold,
-          ),
+          style: ConstentTextLabel,
         )
       ],
     );
