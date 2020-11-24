@@ -3,12 +3,28 @@ import 'Repeate_contanier.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'RepeateTextIcon.dart';
 
+const activationcolor = Color(0xFF111328);
+const deactivationcolor = Color(0xFF1D1E33);
+
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
 }
 
 class _InputPageState extends State<InputPage> {
+  Color maleColor = deactivationcolor;
+  Color femaleColor = deactivationcolor;
+  void updateColor(int gender) {
+    if (gender == 1) {
+      maleColor = activationcolor;
+      femaleColor = deactivationcolor;
+    }
+    if (gender == 2) {
+      maleColor = deactivationcolor;
+      femaleColor = activationcolor;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,20 +37,34 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: [
                 Expanded(
-                  child: Repeate_contanier(
-                    colors: Color(0xFF1D1E33),
-                    cardWidge: RepeateTextIcon(
-                      iconData: FontAwesomeIcons.male,
-                      Label: "MALE",
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        updateColor(1);
+                      });
+                    },
+                    child: Repeate_contanier(
+                      colors: maleColor,
+                      cardWidge: RepeateTextIcon(
+                        iconData: FontAwesomeIcons.male,
+                        Label: "MALE",
+                      ),
                     ),
                   ),
                 ),
                 Expanded(
-                  child: Repeate_contanier(
-                    colors: Color(0xFF1D1E33),
-                    cardWidge: RepeateTextIcon(
-                      iconData: FontAwesomeIcons.female,
-                      Label: "FEMALE",
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        updateColor(2);
+                      });
+                    },
+                    child: Repeate_contanier(
+                      colors: femaleColor,
+                      cardWidge: RepeateTextIcon(
+                        iconData: FontAwesomeIcons.female,
+                        Label: "FEMALE",
+                      ),
                     ),
                   ),
                 ),
